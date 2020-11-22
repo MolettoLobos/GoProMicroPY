@@ -1,0 +1,26 @@
+﻿#check the USB connected files on the linux
+ls /dev/tty.*
+cd Downloads
+/devtty.*
+
+pip3 install esptool
+esptool.py --chip esp8266 --port /dev/ttyUSB0 erase_flash
+#move the file downloaded from micropython.com to the main folder and put flash micropython available in  https://micropython.org/download/esp8266/
+#esptool.py --chip esp8266 --port /dev/ttyUSB0 --baud 115200 write_flash -z 0x1000 esp8266-20200911-v1.13.bin
+esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect 0 esp8266-20200911-v1.13.bin
+
+#ALTERNATIVE PLAFORMS TO CONNECT
+#install screen to finish install
+#sudo apt-get install screen
+#sudo apt-get update
+#communicate via wired to the esp8266 via picocom
+#sudo apt-get install picocom
+#sudo apt-get update
+picocom /dev/ttyUSB0 -b115200
+#to comunicate via pico com you should start always with ctrl+a + ctrl+h and then ctrl+a + command
+
+sudo pip3 install rshell
+#connect to thonny > Options > Interpreter > MIcroPython 3 on a generic device
+http://micropython.org/download/all/
+http://docs.micropython.org/en/latest/esp8266/tutorial/intro.html#deploying-the-firmware
+http://docs.micropython.org/en/latest/esp8266/tutorial/repl.html
